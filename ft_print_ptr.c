@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_ptr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ckrasniq <ckrasniq@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 20:19:15 by ckrasniq          #+#    #+#             */
-/*   Updated: 2024/11/20 21:22:59 by ckrasniq         ###   ########.fr       */
+/*   Updated: 2024/11/22 14:49:51 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	print_hex(unsigned long num, int *count)
 	array_hex = ft_calloc(len + 1, sizeof(char));
 	if (!array_hex)
 	{
-		*count *= -1;
+		*count = -1;
 		return ;
 	}
 	len--;
@@ -49,17 +49,17 @@ void	print_hex(unsigned long num, int *count)
 		num /= 16;
 		array_hex[i--] = hex_digits[temp];
 	}
-	ft_putstr_fd(array_hex, 1, count);
+	ft_putstr_fd(array_hex, count);
 	free(array_hex);
 }
 
-void	print_ptr(void *ptr, int *count)
+void	ft_print_ptr(void *ptr, int *count)
 {
-	unsigned long num;
+	unsigned long long num;
 
-	ft_putstr_fd("0x", 1, count);
-	num = (unsigned long)ptr;
+	ft_putstr_fd("0x", count);
+	num = (unsigned long long)ptr;
 	if (num == 0)
-		ft_putstr_fd("0", 1, count);
+		ft_putstr_fd("0", count);
 	print_hex(num, count);
 }

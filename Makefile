@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ckrasniq <ckrasniq@student.42.fr>          +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/15 16:59:12 by ckrasniq          #+#    #+#              #
-#    Updated: 2024/11/17 17:48:15 by ckrasniq         ###   ########.fr        #
+#    Updated: 2024/11/22 14:29:38 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,9 @@ SRCS			=	ft_calloc.c \
 					ft_putchar_fd.c \
 					ft_putnbr_fd.c \
 					ft_putstr_fd.c \
-					ft_strdup.c \
 					ft_strlen.c \
+					ft_print_ptr.c \
+					
 
 OBJECTS			= $(SRCS:.c=.o)
 

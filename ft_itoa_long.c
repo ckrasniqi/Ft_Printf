@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	reverse_digits(char *array)
+void	reverse_digits_long(char *array)
 {
 	int		i;
 	int		j;
@@ -30,7 +30,7 @@ void	reverse_digits(char *array)
 	}
 }
 
-void	create_digit_array(int n, int len, char *array)
+void	create_digit_array_long(unsigned int n, int len, char *array)
 {
 	int	neg;
 	int	i;
@@ -55,7 +55,7 @@ void	create_digit_array(int n, int len, char *array)
 	}
 }
 
-int	count_len(int n)
+int	count_len_long(unsigned int n)
 {
 	int	len;
 
@@ -72,20 +72,20 @@ int	count_len(int n)
 	return (len);
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa_long(unsigned int n)
 {
 	char	*array;
 	int		bytes;
 	int		digit_len;
 
-	digit_len = count_len(n);
+	digit_len = count_len_long(n);
 	bytes = 0;
 	if (n < 0)
 		bytes++;
 	array = (char *)ft_calloc(digit_len + bytes + 1, sizeof(char));
 	if (!array)
 		return (NULL);
-	create_digit_array(n, digit_len, array);
-	reverse_digits(array);
+	create_digit_array_long(n, digit_len, array);
+	reverse_digits_long(array);
 	return (array);
 }
