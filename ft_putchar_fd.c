@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ckrasniq <ckrasniq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/29 19:33:25 by ckrasniq          #+#    #+#             */
-/*   Updated: 2024/11/22 14:24:48 by marvin           ###   ########.fr       */
+/*   Created: 2024/11/22 18:57:23 by ckrasniq          #+#    #+#             */
+/*   Updated: 2024/11/22 18:57:30 by ckrasniq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 void	ft_putchar_fd(char c, int fd, int *count)
 {

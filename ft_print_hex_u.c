@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_ptr.c                                     :+:      :+:    :+:   */
+/*   ft_print_hex_u.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckrasniq <ckrasniq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 20:19:15 by ckrasniq          #+#    #+#             */
-/*   Updated: 2024/11/22 19:40:09 by ckrasniq         ###   ########.fr       */
+/*   Created: 2024/11/23 18:52:24 by ckrasniq          #+#    #+#             */
+/*   Updated: 2024/11/23 19:01:32 by ckrasniq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	length_of_hex(unsigned long long num)
+int	length_of_hex_u(unsigned long long num)
 {
 	int	i;
 
@@ -25,15 +25,15 @@ int	length_of_hex(unsigned long long num)
 	return (i);
 }
 
-void	print_hex(unsigned long long num, int *count)
+void	print_hex_u(unsigned int num, int *count)
 {
 	int		len;
 	char	*hex_digits;
 	char	*array_hex;
 	int		temp;
 
-	len = length_of_hex(num);
-	hex_digits = "0123456789abcdef";
+	len = length_of_hex_u(num);
+	hex_digits = "0123456789ABCDEF";
 	array_hex = ft_calloc(len + 1, sizeof(char));
 	if (!array_hex)
 	{
@@ -51,14 +51,10 @@ void	print_hex(unsigned long long num, int *count)
 	free(array_hex);
 }
 
-void	ft_print_ptr(void *ptr, int *count)
+void	ft_print_hex_u(unsigned int num, int *count)
 {
-	unsigned long long	num;
-
-	ft_putstr_fd("0x", count);
-	num = (unsigned long long)ptr;
 	if (num == 0)
 		ft_putstr_fd("0", count);
 	else
-		print_hex((unsigned long long) num, count);
+		print_hex_u(num, count);
 }

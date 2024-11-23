@@ -5,16 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckrasniq <ckrasniq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 20:17:18 by ckrasniq          #+#    #+#             */
-/*   Updated:` 2024/11/20 21:20:56 by ckrasniq         ###   ########.fr       */
+/*   Created: 2024/11/23 18:46:21 by ckrasniq          #+#    #+#             */
+/*   Updated: 2024/11/23 19:04:53 by ckrasniq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-# include <stdarg.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
 
 void	find_fspecifier(const char *format, va_list args, int i, int *count)
 {
@@ -26,31 +22,24 @@ void	find_fspecifier(const char *format, va_list args, int i, int *count)
 			return (ft_putstr_fd(va_arg(args, char *), count));
 		else if (format[i] == '%' && format[i + 1] == 'p')
 			return (ft_print_ptr(va_arg(args, void *), count));
-		else if (format[i] == '%' && (format[i + 1] == 'd' || format[i + 1] == 'i'))
+		else if (format[i] == '%' && (format[i + 1] == 'd'))
 			return (ft_print_nbr(va_arg(args, int), count));
-		// else if (format[i] == '%' && format[i + 1] == 'u')
-		// 	return (ft_print_long(va_arg(args, unsigned int), count));
-		// else if (format[i] == '%' && format[i + 1] == 'x')
-		// 	return (0);
-		// else if (format[i] == '%' && format[i + 1] == 'X')
-		// 	return (0);
+		else if (format[i] == '%' && (format[i + 1] == 'i'))
+			return (ft_print_nbr(va_arg(args, int), count));
+		else if (format[i] == '%' && format[i + 1] == 'u')
+			return (ft_print_long(va_arg(args, unsigned int), count));
+		else if (format[i] == '%' && format[i + 1] == 'x')
+			return (ft_print_hex_l(va_arg(args, unsigned long), count));
+		else if (format[i] == '%' && format[i + 1] == 'X')
+			return (ft_print_hex_u(va_arg(args, unsigned long), count));
 		else if (format[i] == '%' && format[i + 1] == '%')
 			return (ft_putchar_fd('%', 1, count));
-		// else
-		// 	return ;
+		else
+			return ;
 		i++;
 	}
 }
-/*
 
-d for intiger
-i for intiger
-u for long int
-x or hex
-X for HEX
-%% for %%*/
-
-// format is the mandatory argument of printf
 int	ft_printf(const char *format, ...)
 {
 	int		i;
@@ -77,14 +66,13 @@ int	ft_printf(const char *format, ...)
 	return (count);
 }
 
-int	main(void)
-{
-	char *c = "hello";
-	int	d = 429496729523423;
-
-	int result = ft_printf("%d\n", d);
-	int nr = printf("%d\n", d);
-	printf("Nr.: %d\n", nr);
-	printf("Returned: %d\n", result);
-	return (0);
-}
+// int	main(void)
+// {
+// 	// char *c = "hello";
+// 	int	d = 10;
+// 	int result = ft_printf("%i\n", INT_MAX);
+// 	int nr = printf("%i\n", INT_MAX);
+// 	printf("Nr.: %d\n", nr);
+// 	printf("Returned: %d\n", result);
+// 	return (0);
+// }
